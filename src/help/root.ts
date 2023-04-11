@@ -24,7 +24,7 @@ export default class RootHelp extends HelpFormatter {
   }
 
   protected usage(): string {
-    return this.section(this.opts.usageHeader || 'USAGE', this.wrap(`$ ${this.config.bin} [COMMAND]`))
+    return this.section(this.opts.usageHeader || 'UTILIZACAO', this.wrap(`$ ${this.config.bin} [COMANDO]`))
   }
 
   protected description(): string | undefined {
@@ -32,10 +32,10 @@ export default class RootHelp extends HelpFormatter {
     description = this.render(description)
     description = description.split('\n').slice(1).join('\n')
     if (!description) return
-    return this.section('DESCRIPTION', this.wrap(description))
+    return this.section('DESCRICAO', this.wrap(description))
   }
 
   protected version(): string {
-    return this.section('VERSION', this.wrap(this.config.userAgent))
+    return this.section('VERSAO', this.wrap(this.config.userAgent))
   }
 }

@@ -75,11 +75,11 @@ export class CommandHelp extends HelpFormatter {
   protected sections(): Array<{ header: string; generate: HelpSectionRenderer }> {
     return [
       {
-        header: this.opts.usageHeader || 'USAGE',
+        header: this.opts.usageHeader || 'UTILIZACAO',
         generate: () => this.usage(),
       },
       {
-        header: 'ARGUMENTS',
+        header: 'ARGUMENTOS',
         generate: ({args}, header) => [{header, body: this.args(args)}],
       },
       {
@@ -101,7 +101,7 @@ export class CommandHelp extends HelpFormatter {
         },
       },
       {
-        header: 'DESCRIPTION',
+        header: 'DESCRICAO',
         generate: () => this.description(),
       },
       {
@@ -109,14 +109,14 @@ export class CommandHelp extends HelpFormatter {
         generate: ({cmd}) => this.aliases(cmd.aliases),
       },
       {
-        header: 'EXAMPLES',
+        header: 'EXEMPLOS',
         generate: ({cmd}) => {
           const examples = cmd.examples || (cmd as any).example
           return this.examples(examples)
         },
       },
       {
-        header: 'FLAG DESCRIPTIONS',
+        header: 'DESCRICOES DE FLAG',
         generate: ({flags}) => this.flagsDescriptions(flags),
       },
     ]
@@ -264,9 +264,9 @@ export class CommandHelp extends HelpFormatter {
     }
 
     if (flag.type === 'option') {
-      let value = flag.helpValue || (this.opts.showFlagNameInTitle ? flag.name : '<value>')
+      let value = flag.helpValue || (this.opts.showFlagNameInTitle ? flag.name : '<valor>')
       if (!flag.helpValue && flag.options) {
-        value = showOptions || this.opts.showFlagOptionsInTitle ? `${flag.options.join('|')}` : '<option>'
+        value = showOptions || this.opts.showFlagOptionsInTitle ? `${flag.options.join('|')}` : '<opcao>'
       }
 
       if (flag.multiple) value += '...'
@@ -291,7 +291,7 @@ export class CommandHelp extends HelpFormatter {
       if (flag.required) right = `(required) ${right}`
 
       if (flag.type === 'option' && flag.options && !flag.helpValue && !this.opts.showFlagOptionsInTitle) {
-        right += `\n<options: ${flag.options.join('|')}>`
+        right += `\n<opcoes: ${flag.options.join('|')}>`
       }
 
       return [left, dim(right.trim())]

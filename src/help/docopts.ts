@@ -92,7 +92,7 @@ export class DocOpts {
       opts.push(...this.flagList.map(flag => {
         const name = flag.char ? `-${flag.char}` : `--${flag.name}`
         if (flag.type === 'boolean') return name
-        return `${name}=<value>`
+        return `${name}=<valor>`
       }))
     }
 
@@ -173,7 +173,7 @@ export class DocOpts {
       // not all flags have short names
       const flagName = flag.char ? `-${flag.char}` : `--${flag.name}`
       if (flag.type === 'option') {
-        type = flag.options ? ` ${flag.options.join('|')}` : ' <value>'
+        type = flag.options ? ` ${flag.options.join('|')}` : ' <valor>'
       }
 
       const element = `${flagName}${type}`

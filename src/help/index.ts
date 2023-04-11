@@ -264,7 +264,7 @@ export class Help extends HelpBase {
       indentation: 2,
     })
 
-    return this.section('COMMANDS', body)
+    return this.section('COMANDOS', body)
   }
 
   protected summary(c: Command.Class | Command.Loadable | Command.Cached): string | undefined {
@@ -290,8 +290,8 @@ export class Help extends HelpBase {
     if (this.config.topicSeparator !== ':') topicID = topicID.replace(/:/g, this.config.topicSeparator)
     let output = compact([
       summary,
-      this.section(this.opts.usageHeader || 'USAGE', `$ ${this.config.bin} ${topicID}`),
-      description && this.section('DESCRIPTION', this.wrap(description)),
+      this.section(this.opts.usageHeader || 'UTILIZACAO', `$ ${this.config.bin} ${topicID}`),
+      description && this.section('DESCRICAO', this.wrap(description)),
     ]).join('\n\n')
     if (this.opts.stripAnsi) output = stripAnsi(output)
     return output + '\n'
@@ -310,7 +310,7 @@ export class Help extends HelpBase {
       stripAnsi: this.opts.stripAnsi,
       indentation: 2,
     })
-    return this.section('TOPICS', body)
+    return this.section('TOPICOS', body)
   }
 
   protected command(command: Command.Class): string {
